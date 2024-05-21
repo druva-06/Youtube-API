@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+
+import "./App.css";
+
+import Navbar from "./components/navbar/Navbar";
+import Videos from "./components/videos/Videos";
 
 function App() {
+
+  const [youtubeTokenKey, setYoutubeTokenKey] = useState(JSON.parse(localStorage.getItem('youtubeTokenKey')));
+
+  if(youtubeTokenKey === null){
+    const apiKey = prompt("Enter the Youtube api key")
+    localStorage.setItem('youtubeTokenKey', JSON.stringify(apiKey));
+    setYoutubeTokenKey(apiKey)
+  }
+
+  const [searchContent, setSearchContent] = useState("reactjs");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar setSearchContent={setSearchContent}/>
+      <Videos searchContent={searchContent} youtubeTokenKey={youtubeTokenKey}/>
     </div>
   );
 }

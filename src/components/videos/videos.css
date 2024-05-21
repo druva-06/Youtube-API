@@ -1,0 +1,23 @@
+
+.videos-list{
+    padding-top: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.videos{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.video{
+    width: 300px;
+}
+
+.video > iframe{
+    cursor: pointer;
+}
+
