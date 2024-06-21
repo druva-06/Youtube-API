@@ -1,22 +1,29 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-import './navbar.css'
+import "./navbar.css";
 
-export default function Navbar({setSearchContent}) {
-  
+export default function Navbar({ setSearchContent }) {
   const [content, setContent] = useState();
+  console.log(content);
 
   return (
     <nav>
       <div className="nav-container">
         <div className="heading">
           <span className="material-symbols-outlined">menu</span>
-          <div style={{width: '100px', fill: 'currentcolor', cursor: 'pointer'}}>
+          <div
+            style={{ width: "100px", fill: "currentcolor", cursor: "pointer" }}
+          >
             <svg
               className="external-icon"
               viewBox="0 0 90 20"
               focusable="false"
-              style={{PointerEvent: 'none', display:'block', width:'100%', height:'100%'}}
+              style={{
+                PointerEvent: "none",
+                display: "block",
+                width: "100%",
+                height: "100%",
+              }}
             >
               <svg
                 viewBox="0 0 90 20"
@@ -50,20 +57,27 @@ export default function Navbar({setSearchContent}) {
         </div>
         <div className="search">
           <div className="search-bar">
-            <input type="text" className="search-field" placeholder="Search" 
-            onChange={(event) => {
-              setContent(event.target.value);
-              
-            }}
-            onKeyPress={(event) => {
-              if (event.key === 'Enter') {
-                setSearchContent(setContent)
-              }
-            }}
+            <input
+              type="text"
+              className="search-field"
+              placeholder="Search"
+              onChange={(event) => {
+                setContent(event.target.value);
+              }}
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  setSearchContent(content);
+                }
+              }}
             />
-            <span className="material-symbols-outlined" onClick={() => {
-              setSearchContent(content);
-            }}>search</span>
+            <span
+              className="material-symbols-outlined"
+              onClick={() => {
+                setSearchContent(content);
+              }}
+            >
+              search
+            </span>
           </div>
           <div className="search-voice">
             <span className="material-symbols-outlined">mic</span>
